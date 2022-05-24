@@ -17,6 +17,6 @@ int main() {
     //    }
     //}
     std::cout << "Hello ray tracing!";
-
+    system("puase");
     return 0;
 }
