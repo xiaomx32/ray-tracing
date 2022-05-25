@@ -1,26 +1,26 @@
-vec3() : e{ 0.0f, 0.0f, 0.0f } { }
+vec3::vec3() : e{ 0.0f, 0.0f, 0.0f } {}
 
-vec3(double e0, double e1, double e2) : e{ e0, e1, e2 } {}
+vec3::vec3(double e0, double e1, double e2) : e{ e0, e1, e2 } {}
 
-double x() const { return e[0]; }
+double vec3::x() const { return e[0]; }
 
-double y() const { return e[1]; }
+double vec3::y() const { return e[1]; }
 
-double z() const { return e[2]; }
+double vec3::z() const { return e[2]; }
 
-vec3 operator-() const {// 定义负号的意义
+vec3 vec3::operator-() const {// 定义负号的意义
 	return vec3(-e[0], -e[1], -e[2]);
 }
 
-double operator[](int i) const {// 取值
+double vec3::operator[](int i) const {// 取值
 	return e[i];
 }
 
-double& operator[](int i) {// 加引用，可以修改值
+double& vec3::operator[](int i) {// 加引用，可以修改值
 	return e[i];
 }
 
-vec3& operator+=(const vec3& v) {
+vec3& vec3::operator+=(const vec3& v) {
 	e[0] += v.e[0];// "." 运算符来访问 v 对象的成员
 	e[1] += v.e[1];
 	e[2] += v.e[2];
@@ -28,7 +28,7 @@ vec3& operator+=(const vec3& v) {
 	return *this;
 }
 
-vec3& operator*=(const double t) {
+vec3& vec3::operator*=(const double t) {
 	e[0] *= t;
 	e[1] *= t;
 	e[2] *= t;
@@ -36,15 +36,15 @@ vec3& operator*=(const double t) {
 	return *this; 
 }
 
-vec3& operator/=(const double t) {
+vec3& vec3::operator/=(const double t) {
 	return *this *= 1 / t;
 }
 
-double length_squared() const {// 向量模的平方
+double vec3::length_squared() const {// 向量模的平方
 	return e[0] * e[0] + e[1] * e[1] + e[2] * e[2];
 }
 
-double length() const {// 向量的模
+double vec3::length() const {// 向量的模
 	return std::sqrt(length_squared());
 }
 

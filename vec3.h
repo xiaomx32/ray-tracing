@@ -1,7 +1,7 @@
 #ifndef VEC3_H
 #define VEC3_H
 
-#include <cmath.h>
+#include <cmath>
 #include <iostream>
 
 // œÚ¡ø¿‡
