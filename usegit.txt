@@ -52,3 +52,7 @@ step2:再在本地创建分支并与之关联，又有2种方法
 
 方法2：可以在pull远程分支的同时，创建本地分支并与之进行关联
 git pull origin dev:dev-------两个dev分别表示远程分支名：本地分支名
+
+
+当前分支追踪远程分支
+git branch --set-upstream-to=origin/<branch> master
