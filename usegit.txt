@@ -1,3 +1,4 @@
+、、、、、、、、、、、、、、、、、、、、、、、、、、、
 获取仓库
 git clone 或 git init
 
@@ -9,7 +10,7 @@ git commit -m “comment”
 
 推送
 git push origin main
-
+、、、、、、、、、、、、、、、、、、、、、、、、、、、、
 
 1、git删除远程分支
 git push origin --delete [branch_name]
@@ -20,19 +21,44 @@ git branch -D 是git branch --delete --force的简写，它会直接删除。
 
 共同点
 都是删除本地分支的方法（与删除远程分支命令相独立，要想本地和远程都删除，必须得运行两个命令）。
-
+、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、
 3、git查看分支：
 查看本地分支 git branch
 查看远程分支 git branch -r
 查看本地和远程分支 git branch -a
-
+、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、
 4、git 删除分支：
 删除本地分支 git branch -d 本地分支名
 删除远程分支 git push origin --delete 远程分支名
 推送空分支到远程（删除远程分支另一种实现）git push origin :远程分支
+、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、
+git 删除远程分支文件
+git删除远程分支包括两种情况：
+（1）仅仅删除远程分支文件，不删除本地的文件；
+（2）删除远程分支文件的同时，删除本地的文件。
 
+1. 仅仅删除远程分支文件，不删除本地文件
+删除远程文件filename
+git rm --cached filename
+git commit -m "delete remote file filename "
+git push -u origin master(此处是当前分支的名字)
 
+删除远程文件夹directoryname
+git rm -r --cached directoryname
+git commit -m "delete remote directory directoryname "
+git push -u origin master(此处是当前分支的名字)
 
+2. 删除本地文件与远程分支文件
+删除文件filename
+git rm filename
+git commit -m "delete file filename "
+git push -u origin master(此处是当前分支的名字)
+
+删除文件夹directoryname
+git rm -r directoryname
+git commit -m "delete directory directoryname "
+git push -u origin master(此处是当前分支的名字)
+、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、
 
 本地分支与远程分支进行关联
 情形1：本地已经创建了分支dev（以dev为例，下同），而远程没有
