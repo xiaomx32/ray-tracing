@@ -1,0 +1,97 @@
+获取仓库
+git clone 或 git init
+
+添加文件到暂存区
+git add filename
+
+提交文件
+git commit -m “comment”
+
+推送
+git push origin main
+
+
+1、git删除远程分支
+git push origin --delete [branch_name]
+
+2、删除本地分支区别
+git branch -d 会在删除前检查merge状态（其与上游分支或者与head）。
+git branch -D 是git branch --delete --force的简写，它会直接删除。
+
+共同点
+都是删除本地分支的方法（与删除远程分支命令相独立，要想本地和远程都删除，必须得运行两个命令）。
+
+3、git查看分支：
+查看本地分支 git branch
+查看远程分支 git branch -r
+查看本地和远程分支 git branch -a
+
+4、git 删除分支：
+删除本地分支 git branch -d 本地分支名
+删除远程分支 git push origin --delete 远程分支名
+推送空分支到远程（删除远程分支另一种实现）git push origin :远程分支
+
+
+
+
+本地分支与远程分支进行关联
+情形1：本地已经创建了分支dev（以dev为例，下同），而远程没有
+
+可以通过以下2种方法在远程创建分支dev，并与本地分支进行关联：
+方法1： git push -u origin dev
+方法2： git push --set-upstream origin dev
+
+情形2：远程已经创建了分支dev,而本地没有
+
+在本地创建分支并与远程分支进行关联，也有2种方法：
+方法1分为两步：
+step1:先将远程分支pull到本地 git pull origin dev
+step2:再在本地创建分支并与之关联，又有2种方法
+(1)git checkout -b dev origin/dev
+(2)git checkout -b dev --track origin/dev     #可以简写为git checkout --track origin/dev
+
+方法2：可以在pull远程分支的同时，创建本地分支并与之进行关联
+git pull origin dev:dev-------两个dev分别表示远程分支名：本地分支名
+
+
+当前分支追踪远程分支
+git branch --set-upstream-to=origin/<branch> master
+
+
+恢复操作
+1、已经修改了文件，还未进行 git add（即工作区的内容不想要了）
+使用以下任意命令
+git checkout .
+git checkout -- <FILENAME>
+git reset --hard
+
+2、已经进行了git add，还未进行git commit（即暂存区的内容不想要了）
+使用以下任意命令
+git reset
+git checkout .
+git reset --hard
+git reset HEAD
+git reset HEAD -- <FILENAME>
+
+3、已提交 未推送
+已经进行了git commit，还未进行git push
+
+恢复方法
+使用远程仓库覆盖本地仓库
+
+git reset --hard origin/master
+
+4、已推送
+已经进行了git push
+
+恢复方法
+回滚本地仓库，强制推送覆盖远程仓库
+
+git reset --hard HEAD^
+git push -f
+
+5、其他情况
+丢弃某个节点后的全部提交
+即HEAD指针指向该节点
+
+git reset --hard <COMMITID>
