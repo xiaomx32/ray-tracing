@@ -56,3 +56,52 @@ git pull origin dev:dev-------两个dev分别表示远程分支名：本地分�
 
 当前分支追踪远程分支
 git branch --set-upstream-to=origin/<branch> master
+
+
+恢复操作
+1、已经修改了文件，还未进行 git add（即工作区的内容不想要了）
+使用以下任意命令
+git checkout .
+git checkout -- <FILENAME>
+git reset --hard
+
+2、已经进行了git add，还未进行git commit（即暂存区的内容不想要了）
+使用以下任意命令
+git reset
+git checkout .
+git reset --hard
+git reset HEAD
+git reset HEAD -- <FILENAME>
+
+3、已提交 未推送
+已经进行了git commit，还未进行git push
+
+恢复方法
+使用远程仓库覆盖本地仓库
+
+git reset --hard origin/master
+
+4、已推送
+已经进行了git push
+
+恢复方法
+回滚本地仓库，强制推送覆盖远程仓库
+
+git reset --hard HEAD^
+git push -f
+
+5、其他情况
+丢弃某个节点后的全部提交
+即HEAD指针指向该节点
+
+git reset --hard <COMMITID>
+
+
+
+
+
+
+
+
+
+

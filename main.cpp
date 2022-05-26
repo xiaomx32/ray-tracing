@@ -1,19 +1,27 @@
+#include "vec3.h"
+#include "color.h"
+
 #include <iostream>
 
 int main() {
-    int nx = 200;
-    int ny = 100;
+    // image
+    const int image_width = 256;
+    const int image_height = 256;
 
-    std::cout << "P3\n" << nx << " " << ny << "\n255\n";
-    for (int j = ny - 1; j >= 0; --j) {
-        for (int i = 0; i < nx; ++i) {
-            float r = float(i) / float(nx);
-            float g = float(j) / float(ny);
-            float b = 0.2;
-            int ir = int(255.99 * r);
-            int ig = int(255.99 * g);
-            int ib = int(255.99 * b);
-            std::cout << ir << " " << ig << " " << ib << "\n";
+    // Render
+    // 输出流，可以重定向写入到文件
+    std::cout << "P3\n" << image_width << " " << image_height << "\n255\n";
+
+    for (int j = image_height - 1; j >= 0; --j) {
+        std::cerr << "\rScanlines remaining: " << j << ' ' << std::flush;
+        for (int i = 0; i < image_width; ++i) {
+            color pixel_color(double(i) / (double)(image_width - 1), double(j) / (double)(image_height - 1), 0.25);
+            write_color(std::cout, pixel_color);
         }
     }
+    // 处理错误输出流，无缓冲，只能写到屏幕上，不能重定向写入到文件
+    std::cerr << "\nDone.\n";
+    std::cin.get();
+
+    return 0;
 }
