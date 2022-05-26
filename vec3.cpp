@@ -1,3 +1,5 @@
+#include "vec3.h"
+
 vec3::vec3() : e{ 0.0f, 0.0f, 0.0f } {}
 
 vec3::vec3(double e0, double e1, double e2) : e{ e0, e1, e2 } {}
@@ -90,8 +92,4 @@ vec3 cross(const vec3& u, const vec3& v) {// ²æ³Ë
 
 vec3 unit_vector(vec3 v) {// µ¥Î»»¯
 	return v / v.length();
-}
-
-vec3 random() {
-	return vec3(random_double(), random_double(), random_double());
 }

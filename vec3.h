@@ -60,8 +60,6 @@ vec3 cross(const vec3& u, const vec3& v);
 
 vec3 unit_vector(vec3 v);
 
-vec3 random();
-
 #endif
 
 /*
