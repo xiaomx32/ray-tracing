@@ -29,7 +29,6 @@ public:
 	double length_squared() const;
 	double length() const;
 
-
 public:
 	double e[3];
 
@@ -61,11 +60,3 @@ vec3 cross(const vec3& u, const vec3& v);
 vec3 unit_vector(vec3 v);
 
 #endif
-
-/*
-* 1、构造函数
-* 2、重载运算符
-*		相当于一个函数，形参个数等于运算符参与对象个数
-* 3、返回一个值的引用
-* 4、类内部的成员函数是自动 inline 的
-*/
