@@ -11,14 +11,14 @@ int main() {
     const auto aspect_ratio = 16.0 / 9.0;
     const int image_width = 400;
     // 编译器隐式执行的任何类型转换都可以由 static_cast 来完成
-    const int image_height = static_cast<int>(image_width / aspect_ratio);
+    const int image_height = static_cast<int>(image_width / aspect_ratio);// 宽高比为 16 : 9
 
     // Camera
     auto viewport_height = 2.0;
     auto viewport_width = aspect_ratio * viewport_height;
     auto focal_length = 1.0;
 
-    auto origin = point3(0, 0, 0);
+    auto origin = point3(0, 0, 0);// 射线的起点
     auto horizontal = vec3(viewport_width, 0, 0);
     auto vertical = vec3(0, viewport_height, 0);
     auto lower_left_corner = origin - horizontal / 2 - vertical / 2 - vec3(0, 0, focal_length);
