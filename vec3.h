@@ -1,6 +1,7 @@
 #ifndef VEC3_H
 #define VEC3_H
 
+#include "rtweekend.h"
 #include <cmath>
 #include <iostream>
 
@@ -29,10 +30,15 @@ public:
 	double length_squared() const;
 	double length() const;
 
+	static vec3 random();
+
+	static vec3 random(double min, double max);
+
 public:
 	double e[3];
 
 };
+
 
 // 取别名
 using point3 = vec3;// 3d point
@@ -59,4 +65,12 @@ vec3 cross(const vec3& u, const vec3& v);
 
 vec3 unit_vector(vec3 v);
 
+vec3 random_in_unit_sphere();
+
 #endif
+
+/*
+* 在类声明中声明成员函数时， static 关键字指定该函数由该类的所有实例共享
+* static 成员函数无法访问实例成员，因为该函数没有隐式 this 指针
+* 若要访问实例成员，需使用实例指针或引用的参数声明函数
+*/

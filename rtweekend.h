@@ -8,7 +8,7 @@
 */
 
 #include "vec3.h"
-#include "ray.h"
+
 
 #include <cmath>
 #include <limits>

@@ -50,6 +50,14 @@ double vec3::length() const {// 向量的模
 	return std::sqrt(length_squared());
 }
 
+vec3 vec3::random() {
+	return vec3(random_double(), random_double(), random_double());
+}
+
+vec3 vec3::random(double min, double max) {
+	return vec3(random_double(min, max), random_double(min, max), random_double(min, max));
+}
+
 
 // 非成员函数
 std::ostream& operator<<(std::ostream& out, const vec3& v) {
@@ -92,4 +100,12 @@ vec3 cross(const vec3& u, const vec3& v) {// 叉乘
 
 vec3 unit_vector(vec3 v) {// 单位化
 	return v / v.length();
+}
+
+vec3 random_in_unit_sphere() {
+	while (true) {
+		auto p = vec3::random(-1, 1);
+		if (p.length_squared() >= 1) continue;
+		return p;
+	}
 }
