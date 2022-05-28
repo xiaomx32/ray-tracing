@@ -2,7 +2,7 @@
 
 camera::camera(point3 lookfrom, point3 lookat,
     vec3 vup, double vfov, double aspect_ratio,
-    double aperture, double focus_dist) {// vertical field-of-view in degrees
+    double aperture, double focus_dist) {
 
     auto theta = degrees_to_radians(vfov);
     auto h = tan(theta / 2);
@@ -20,12 +20,6 @@ camera::camera(point3 lookfrom, point3 lookat,
 
     lens_radius = aperture / 2;
 }
-
-/*
-* ray camera::get_ray(double s, double t) const {
-*     return ray(origin, lower_left_corner + s * horizontal + t * vertical - origin);
-* }
-*/
 
 ray camera::get_ray(double s, double t) const {
     vec3 rd = lens_radius * random_in_unit_disk();

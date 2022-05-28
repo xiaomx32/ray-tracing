@@ -48,7 +48,7 @@ public:
         const hit_record& rec, color& attenuation, ray& scattered) const override;
 
 public:
-    double ir;// Index of Refraction
+    double ir;
 
 private:
     static double reflectance(double cosine, double ref_idx);
