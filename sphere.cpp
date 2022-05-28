@@ -14,7 +14,6 @@ bool sphere::hit(const ray& r, double t_min, double t_max, hit_record& rec) cons
     if (discriminant < 0) { return false; }
     auto sqrtd = sqrt(discriminant);
 
-    // Find the nearest root that lies in the acceptable range.
     auto root = (-half_b - sqrtd) / a;
     if (root < t_min || t_max < root) {
         root = (-half_b + sqrtd) / a;

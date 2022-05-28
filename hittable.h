@@ -10,7 +10,7 @@ struct hit_record {
 	hit_record();
 	vec3 p;
 	vec3 normal;
-	shared_ptr<material> mat_ptr;// ²ÄÖÊÖ¸Õë
+	shared_ptr<material> mat_ptr;
 	double t;
 	bool front_face;
 

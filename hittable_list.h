@@ -2,7 +2,7 @@
 #define HITTABLE_LIST_H
 
 #include "hittable.h"
-#include <memory>// ÖÇÄÜÖ¸Õë std::shared_ptr
+#include <memory>
 #include <vector>
 
 using std::shared_ptr;
