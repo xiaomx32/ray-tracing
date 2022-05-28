@@ -39,7 +39,6 @@ public:
 
 };
 
-
 // È¡±ðÃû
 using point3 = vec3;// 3d point
 using color = vec3;// RGB color
@@ -66,6 +65,8 @@ vec3 cross(const vec3& u, const vec3& v);
 vec3 unit_vector(vec3 v);
 
 vec3 random_in_unit_sphere();
+
+vec3 random_unit_vector();
 
 #endif
 

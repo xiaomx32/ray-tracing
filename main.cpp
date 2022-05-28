@@ -18,7 +18,8 @@ int main() {
     const int image_width = 400;
     // 编译器隐式执行的任何类型转换都可以由 static_cast 来完成
     const int image_height = static_cast<int>(image_width / aspect_ratio);// 宽高比为 16 : 9
-    const int samples_per_pixel = 100;
+    //const int samples_per_pixel = 100;
+    const int samples_per_pixel = 40;
     const int max_depth = 50;
 
     // World
@@ -77,11 +78,13 @@ color ray_color(const ray& r, const hittable& world, int depth) {
     hit_record rec;
 
     // If we've exceeded the ray bounce limit, no more light is gathered.
-    if (depth <= 0)
+    if (depth <= 0) {
         return color(0, 0, 0);
+    }
 
-    if (world.hit(r, 0, infinity, rec)) {
-        point3 target = rec.p + rec.normal + random_in_unit_sphere();
+    // Fixing Shadow Acne -> 0.001
+    if (world.hit(r, 0.001, infinity, rec)) {
+        point3 target = rec.p + rec.normal + random_unit_vector();
         return 0.5 * ray_color(ray(rec.p, target - rec.p), world, depth - 1);
     }
 
