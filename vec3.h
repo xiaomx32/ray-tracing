@@ -31,8 +31,9 @@ public:
 	double length() const;
 
 	static vec3 random();
-
 	static vec3 random(double min, double max);
+
+	bool near_zero() const;
 
 public:
 	double e[3];
@@ -69,6 +70,8 @@ vec3 random_in_unit_sphere();
 vec3 random_unit_vector();
 
 vec3 random_in_hemisphere(const vec3& normal);
+
+vec3 reflect(const vec3& v, const vec3& n);
 
 #endif
 
