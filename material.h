@@ -5,10 +5,6 @@
 #include "rtweekend.h"
 #include "ray.h"
 
-/*
-* 在函数中使用 hit_record 作为传入参数，就可以不用传入一大堆变量
-* 当然如果你想传一堆变量进去的话也行，这也是个人喜好
-*/
 struct hit_record;
 
 
@@ -40,7 +36,23 @@ public:
 
 public:
     color albedo;
-    double fuzz;// 模糊度
+    double fuzz;
+};
+
+
+class dielectric : public material {
+public:
+    dielectric(double index_of_refraction);
+
+    virtual bool scatter(const ray& r_in,
+        const hit_record& rec, color& attenuation, ray& scattered) const override;
+
+public:
+    double ir;// Index of Refraction
+
+private:
+    static double reflectance(double cosine, double ref_idx);
+
 };
 
 #endif

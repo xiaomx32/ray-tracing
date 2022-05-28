@@ -5,20 +5,16 @@
 #include <cmath>
 #include <iostream>
 
-// 向量类
 class vec3 {
 
 public:
-	// 构造函数，用于初始化 vec3 类
 	vec3();
 	vec3(double e0, double e1, double e2);
 
-	// 用于接收 e 的值，在编程时可以直接使用（x，y，z）更利于明白意思
 	double x() const;
 	double y() const;
 	double z() const;
 
-	// 重载运算符，定义 vec3 有关的操作
 	vec3 operator-() const;
 	double operator[](int i) const;
 	double& operator[](int i);
@@ -40,11 +36,10 @@ public:
 
 };
 
-// 取别名
-using point3 = vec3;// 3d point
-using color = vec3;// RGB color
+using point3 = vec3;
+using color = vec3;
 
-// 非成员函数
+
 std::ostream& operator<<(std::ostream& out, const vec3& v);
 
 vec3 operator+(const vec3& u, const vec3& v);
@@ -73,10 +68,6 @@ vec3 random_in_hemisphere(const vec3& normal);
 
 vec3 reflect(const vec3& v, const vec3& n);
 
-#endif
+vec3 refract(const vec3& uv, const vec3& n, double etai_over_etat);
 
-/*
-* 在类声明中声明成员函数时， static 关键字指定该函数由该类的所有实例共享
-* static 成员函数无法访问实例成员，因为该函数没有隐式 this 指针
-* 若要访问实例成员，需使用实例指针或引用的参数声明函数
-*/
+#endif

@@ -26,16 +26,19 @@ int main() {
     // World
     hittable_list world;
 
+    //auto material_ground = make_shared<lambertian>(color(0.8, 0.8, 0.0));
+    //auto material_center = make_shared<dielectric>(1.5);
+    //auto material_left = make_shared<dielectric>(1.5);
+    //auto material_right = make_shared<metal>(color(0.8, 0.6, 0.2), 1.0);
     auto material_ground = make_shared<lambertian>(color(0.8, 0.8, 0.0));
-    auto material_center = make_shared<lambertian>(color(0.7, 0.3, 0.3));
-    //auto material_left = make_shared<metal>(color(0.8, 0.8, 0.8));
-    //auto material_right = make_shared<metal>(color(0.8, 0.6, 0.2));
-    auto material_left = make_shared<metal>(color(0.8, 0.8, 0.8), 0.3);
-    auto material_right = make_shared<metal>(color(0.8, 0.6, 0.2), 1.0);
+    auto material_center = make_shared<lambertian>(color(0.1, 0.2, 0.5));
+    auto material_left = make_shared<dielectric>(1.5);
+    auto material_right = make_shared<metal>(color(0.8, 0.6, 0.2), 0.0);
 
     world.add(make_shared<sphere>(point3(0.0, -100.5, -1.0), 100.0, material_ground));
     world.add(make_shared<sphere>(point3(0.0, 0.0, -1.0), 0.5, material_center));
     world.add(make_shared<sphere>(point3(-1.0, 0.0, -1.0), 0.5, material_left));
+    world.add(make_shared<sphere>(point3(-1.0, 0.0, -1.0), -0.4, material_left));// Scene with hollow glass sphere
     world.add(make_shared<sphere>(point3(1.0, 0.0, -1.0), 0.5, material_right));
 
 
@@ -66,12 +69,8 @@ int main() {
     return 0;
 }
 
-double hit_sphere(const point3& center, double radius, const ray& r) {// Ö±ÏßÓëÇòµÄ½»µã
-    vec3 oc = r.origin() - center;// ÇòÐÄ×ø±ê
-    //auto a = dot(r.direction(), r.direction());
-    //auto b = 2.0 * dot(oc, r.direction());
-    //auto c = dot(oc, oc) - radius * radius;
-    //auto discriminant = b * b - 4 * a * c;
+double hit_sphere(const point3& center, double radius, const ray& r) {
+    vec3 oc = r.origin() - center;
     auto a = r.direction().length_squared();
     auto half_b = dot(oc, r.direction());
     auto c = oc.length_squared() - radius * radius;
@@ -90,12 +89,10 @@ double hit_sphere(const point3& center, double radius, const ray& r) {// Ö±ÏßÓëÇ
 color ray_color(const ray& r, const hittable& world, int depth) {
     hit_record rec;
 
-    // If we've exceeded the ray bounce limit, no more light is gathered.
     if (depth <= 0) {
         return color(0, 0, 0);
     }
 
-    // Fixing Shadow Acne -> 0.001
     if (world.hit(r, 0.001, infinity, rec)) {
         ray scattered;
         color attenuation;
