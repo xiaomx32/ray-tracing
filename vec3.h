@@ -68,6 +68,8 @@ vec3 random_in_unit_sphere();
 
 vec3 random_unit_vector();
 
+vec3 random_in_hemisphere(const vec3& normal);
+
 #endif
 
 /*
