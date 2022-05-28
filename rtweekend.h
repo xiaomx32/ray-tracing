@@ -7,7 +7,8 @@
 * 所以这里自己来定义一下
 */
 
-
+#include "vec3.h"
+#include "ray.h"
 
 #include <cmath>
 #include <limits>
@@ -24,9 +25,6 @@ const double infinity = std::numeric_limits<double>::infinity();
 const double pi = 3.1415926535897932385;
 
 // Utility Functions
-inline double degrees_to_radians(double degrees);
+double degrees_to_radians(double degrees);
 
-// Common Headers
-#include "vec3.h"
-#include "ray.h"
 #endif
