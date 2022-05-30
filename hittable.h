@@ -4,17 +4,17 @@
 #include "ray.h"
 
 struct hit_record {
-	hit_record();
-	vec3 p;
-	vec3 normal;
-	double t;
-	bool front_face;
+	hit_record();// 构造函数
+	vec3 p;// 相交点
+	vec3 normal;// p 点法线
+	double t;// ray 中系数 t
+	bool front_face;// 判断光线从物体是否从外部射入物体（影响法线方向）
 
 	void set_face_normal(const ray& r, const vec3& outward_normal);
 };
 
 /*
-* 使用一个抽象类, 任何可能与光线求交的东西实现时都继承这个类, 并且让球以及球列表也都继承这个类
+* 使用一个抽象类（含纯虚函数的类）, 任何可能与光线求交的东西实现时都继承这个类, 并且让球以及球列表也都继承这个类
 */
 class hittable {
 public:
