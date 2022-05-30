@@ -1,6 +1,10 @@
 #ifndef HITTABLE_LIST_H
 #define HITTABLE_LIST_H
 
+/*
+* 存放物体的列表
+*/
+
 #include "hittable.h"
 #include <memory>// 智能指针 std::shared_ptr
 #include <vector>

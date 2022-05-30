@@ -1,11 +1,11 @@
 #include "rtweekend.h"
-
 #include "color.h"
 #include "hittable_list.h"
 #include "sphere.h"
 
 #include <iostream>
 
+double hit_sphere(const point3& center, double radius, const ray& r);
 color ray_color(const ray& r, const hittable& world);
 
 int main() {
@@ -13,12 +13,12 @@ int main() {
     // image
     const auto aspect_ratio = 16.0 / 9.0;
     const int image_width = 400;
-    // ±àÒëÆ÷ÒşÊ½Ö´ĞĞµÄÈÎºÎÀàĞÍ×ª»»¶¼¿ÉÒÔÓÉ static_cast À´Íê³É
-    const int image_height = static_cast<int>(image_width / aspect_ratio);// ¿í¸ß±ÈÎª 16 : 9
+    const int image_height = static_cast<int>(image_width / aspect_ratio);
 
     // World
     hittable_list world;
     world.add(make_shared<sphere>(point3(0, 0, -1), 0.5));
+    // ÔÚ£¨0, -100.5, -1£©´¦£¬·ÅÖÃÒ»¸öÇò
     world.add(make_shared<sphere>(point3(0, -100.5, -1), 100));
 
     // Camera
@@ -26,7 +26,7 @@ int main() {
     auto viewport_width = aspect_ratio * viewport_height;
     auto focal_length = 1.0;
 
-    auto origin = point3(0, 0, 0);// ÉäÏßµÄÆğµã
+    auto origin = point3(0, 0, 0);
     auto horizontal = vec3(viewport_width, 0, 0);
     auto vertical = vec3(0, viewport_height, 0);
     auto lower_left_corner = origin - horizontal / 2 - vertical / 2 - vec3(0, 0, focal_length);
@@ -44,15 +44,18 @@ int main() {
             write_color(std::cout, pixel_color);
         }
     }
-    // ´¦Àí´íÎóÊä³öÁ÷£¬ÎŞ»º³å£¬Ö»ÄÜĞ´µ½ÆÁÄ»ÉÏ£¬²»ÄÜÖØ¶¨ÏòĞ´Èëµ½ÎÄ¼ş
+
     std::cerr << "\nDone.\n";
     std::cin.get();
 
     return 0;
 }
 
+// ¼ÆËãÇòÌå±íÃæ·¨Ïà
+// Ö±½Ó½«·¨ÏàÖµ×÷ÎªÑÕÉ«Êä³ö
+// Ö»ĞèÒª¼ÆËãÀëÉäÏßÔ­µã×î½üµÄÄÇ¸ö½»µãµÄ·¨Ïà¾ÍĞĞÁË, ºóÃæµÄ¶«Î÷»á±»ÕÚµ²
 double hit_sphere(const point3& center, double radius, const ray& r) {// Ö±ÏßÓëÇòµÄ½»µã
-    vec3 oc = r.origin() - center;// ÇòĞÄ×ø±ê
+    vec3 oc = r.origin() - center;// ÉäÏßµÄÆğµã¡¢ÇòĞÄ
     //auto a = dot(r.direction(), r.direction());
     //auto b = 2.0 * dot(oc, r.direction());
     //auto c = dot(oc, oc) - radius * radius;
@@ -72,14 +75,14 @@ double hit_sphere(const point3& center, double radius, const ray& r) {// Ö±ÏßÓëÇ
     return 0.0;
 }
 
-/*
-* Ê¹ÓÃºìÉ«µÄÏß±íÊ¾ÉäÏß»÷ÖĞ£¨0, 0, -1£©´¦µÄĞ¡Çò
-*/
+// Ê¹ÓÃºìÉ«µÄÏß±íÊ¾ÉäÏß»÷ÖĞ£¨0, 0, -1£©´¦µÄĞ¡Çò
 color ray_color(const ray& r, const hittable& world) {
     hit_record rec;
     if (world.hit(r, 0, infinity, rec)) {
         return 0.5 * (rec.normal + color(1, 1, 1));
     }
+
+    // ±³¾°É«
     vec3 unit_direction = unit_vector(r.direction());
     auto t = 0.5 * (unit_direction.y() + 1.0);
 
