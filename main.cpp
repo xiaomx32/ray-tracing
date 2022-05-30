@@ -13,8 +13,7 @@ int main() {
     // image
     const auto aspect_ratio = 16.0 / 9.0;
     const int image_width = 400;
-    // ±àÒëÆ÷ÒşÊ½Ö´ĞĞµÄÈÎºÎÀàĞÍ×ª»»¶¼¿ÉÒÔÓÉ static_cast À´Íê³É
-    const int image_height = static_cast<int>(image_width / aspect_ratio);// ¿í¸ß±ÈÎª 16 : 9
+    const int image_height = static_cast<int>(image_width / aspect_ratio);
     const int samples_per_pixel = 100;
 
     // World
@@ -41,19 +40,15 @@ int main() {
             write_color(std::cout, pixel_color, samples_per_pixel);
         }
     }
-    // ´¦Àí´íÎóÊä³öÁ÷£¬ÎŞ»º³å£¬Ö»ÄÜĞ´µ½ÆÁÄ»ÉÏ£¬²»ÄÜÖØ¶¨ÏòĞ´Èëµ½ÎÄ¼ş
+
     std::cerr << "\nDone.\n";
     std::cin.get();
 
     return 0;
 }
 
-double hit_sphere(const point3& center, double radius, const ray& r) {// Ö±ÏßÓëÇòµÄ½»µã
-    vec3 oc = r.origin() - center;// ÇòĞÄ×ø±ê
-    //auto a = dot(r.direction(), r.direction());
-    //auto b = 2.0 * dot(oc, r.direction());
-    //auto c = dot(oc, oc) - radius * radius;
-    //auto discriminant = b * b - 4 * a * c;
+double hit_sphere(const point3& center, double radius, const ray& r) {
+    vec3 oc = r.origin() - center;
     auto a = r.direction().length_squared();
     auto half_b = dot(oc, r.direction());
     auto c = oc.length_squared() - radius * radius;
@@ -69,9 +64,6 @@ double hit_sphere(const point3& center, double radius, const ray& r) {// Ö±ÏßÓëÇ
     return 0.0;
 }
 
-/*
-* Ê¹ÓÃºìÉ«µÄÏß±íÊ¾ÉäÏß»÷ÖĞ£¨0, 0, -1£©´¦µÄĞ¡Çò
-*/
 color ray_color(const ray& r, const hittable& world) {
     hit_record rec;
     if (world.hit(r, 0, infinity, rec)) {
