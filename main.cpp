@@ -21,7 +21,7 @@ int main() {
     auto origin = point3(0, 0, 0);// 射线的起点
     auto horizontal = vec3(viewport_width, 0, 0);
     auto vertical = vec3(0, viewport_height, 0);
-    auto lower_left_corner = origin - horizontal / 2 - vertical / 2 - vec3(0, 0, focal_length);
+    auto lower_left_corner = origin - horizontal / 2 - vertical / 2 - vec3(0, 0, focal_length);// 屏幕左下角
 
     // Render
     // 输出流，可以重定向写入到文件
@@ -45,12 +45,14 @@ int main() {
 }
 
 /*
- * ray_color(ray) 函数根据 y 值将蓝白做线性插值的混合
- * 对射线的方向进行单位化, 以保证 y 的取值范围（-1.0 < y < 1.0）
+ * 屏幕坐标系：4 * 2（自定义的）
+ * 需要将光线（视线）向量，进行单位化，以保证每个坐标分量的长度控制在 [-1, 1]
  * 因为我们使用 y 轴做渐变, 所以你可以看到这个蓝白渐变也是竖直的
 */
+
+// ray_color(ray) 函数根据 y 值将蓝白做线性插值的混合
 color ray_color(const ray& r) {
-    vec3 unit_direction = unit_vector(r.direction());
-    auto t = 0.5 * (unit_direction.y() + 1.0);
+    vec3 unit_direction = unit_vector(r.direction());// 单位化，此时取值范围是 [-1, 1]
+    auto t = 0.5 * (unit_direction.y() + 1.0);// 将 y 分量映射到 [0, 1]
     return (1.0 - t) * color(1.0, 1.0, 1.0) + t * color(0.5, 0.7, 1.0);
 }
