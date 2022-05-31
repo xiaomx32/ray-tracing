@@ -10,8 +10,7 @@ int main() {
     // image
     const auto aspect_ratio = 16.0 / 9.0;
     const int image_width = 400;
-    // 编译器隐式执行的任何类型转换都可以由 static_cast 来完成
-    const int image_height = static_cast<int>(image_width / aspect_ratio);// 宽高比为 16 : 9
+    const int image_height = static_cast<int>(image_width / aspect_ratio);
 
     // Camera
     auto viewport_height = 2.0;
@@ -37,7 +36,7 @@ int main() {
             write_color(std::cout, pixel_color);
         }
     }
-    // 处理错误输出流，无缓冲，只能写到屏幕上，不能重定向写入到文件
+
     std::cerr << "\nDone.\n";
     std::cin.get();
 
@@ -54,5 +53,6 @@ int main() {
 color ray_color(const ray& r) {
     vec3 unit_direction = unit_vector(r.direction());// 单位化，此时取值范围是 [-1, 1]
     auto t = 0.5 * (unit_direction.y() + 1.0);// 将 y 分量映射到 [0, 1]
+
     return (1.0 - t) * color(1.0, 1.0, 1.0) + t * color(0.5, 0.7, 1.0);
 }
