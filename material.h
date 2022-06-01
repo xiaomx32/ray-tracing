@@ -39,7 +39,7 @@ public:
     ) const override;
 
 public:
-    color albedo;
+    color albedo;// ·´ÉäÂÊ
 };
 
 
