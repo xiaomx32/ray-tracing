@@ -1,5 +1,6 @@
 #include "camera.h"
 
+// 散焦模糊（景深）
 camera::camera(
     point3 lookfrom,// 相机所在位置，相机在 lookfrom 位置看向 lookat 点
     point3 lookat,// 相机视线指向的位置点
@@ -7,7 +8,7 @@ camera::camera(
     double vfov,// top to bottom, in degrees
     double aspect_ratio,// 屏幕宽高比
     double aperture,// 光圈
-    double focus_dist
+    double focus_dist// 焦距（镜片（眼睛）到成像平面之间的距离）
 ) {// vertical field-of-view in degrees
 
     auto theta = degrees_to_radians(vfov);
