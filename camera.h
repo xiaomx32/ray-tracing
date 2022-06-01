@@ -5,7 +5,15 @@
 
 class camera {
 public:
-    camera(point3 lookfrom, point3 lookat, vec3 vup, double vfov, double aspect_ratio, double aperture, double focus_dist);
+    camera(
+        point3 lookfrom,
+        point3 lookat,
+        vec3 vup,
+        double vfov,
+        double aspect_ratio,
+        double aperture,
+        double focus_dist
+    );
 
     ray get_ray(double s, double t) const;
 
