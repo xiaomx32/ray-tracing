@@ -10,7 +10,7 @@ int main() {
 
     // Render
     // 输出流，可以重定向写入到文件
-    std::cout << "P3\n" << image_width << " " << image_height << "\n255\n";
+    std::cout << "P3\n" << image_width << " " << image_height << "\n255\n";// 255 规定像素的最大值
 
     for (int j = image_height - 1; j >= 0; --j) {
         std::cerr << "\rScanlines remaining: " << j << ' ' << std::flush;
