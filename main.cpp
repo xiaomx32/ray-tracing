@@ -16,8 +16,7 @@ int main() {
     // image
     const auto aspect_ratio = 16.0 / 9.0;
     const int image_width = 400;
-    // 编译器隐式执行的任何类型转换都可以由 static_cast 来完成
-    const int image_height = static_cast<int>(image_width / aspect_ratio);// 宽高比为 16 : 9
+    const int image_height = static_cast<int>(image_width / aspect_ratio);
     //const int samples_per_pixel = 100;
     const int samples_per_pixel = 40;
     const int max_depth = 50;
@@ -54,11 +53,7 @@ int main() {
 }
 
 double hit_sphere(const point3& center, double radius, const ray& r) {// 直线与球的交点
-    vec3 oc = r.origin() - center;// 球心坐标
-    //auto a = dot(r.direction(), r.direction());
-    //auto b = 2.0 * dot(oc, r.direction());
-    //auto c = dot(oc, oc) - radius * radius;
-    //auto discriminant = b * b - 4 * a * c;
+    vec3 oc = r.origin() - center;
     auto a = r.direction().length_squared();
     auto half_b = dot(oc, r.direction());
     auto c = oc.length_squared() - radius * radius;
