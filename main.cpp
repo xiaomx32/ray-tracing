@@ -51,7 +51,7 @@ int main() {
     return 0;
 }
 
-// ¼ÆËãÇòÌå±íÃæ·¨Ïà
+// ¼ÆËãÇòÌå±íÃæÓëÉäÏßµÄ½»µãÒÔ¼°¸ÃµãµÄ·¨Ïß
 // Ö±½Ó½«·¨ÏàÖµ×÷ÎªÑÕÉ«Êä³ö
 // Ö»ĞèÒª¼ÆËãÀëÉäÏßÔ­µã×î½üµÄÄÇ¸ö½»µãµÄ·¨Ïà¾ÍĞĞÁË, ºóÃæµÄ¶«Î÷»á±»ÕÚµ²
 double hit_sphere(const point3& center, double radius, const ray& r) {// Ö±ÏßÓëÇòµÄ½»µã
@@ -79,7 +79,7 @@ double hit_sphere(const point3& center, double radius, const ray& r) {// Ö±ÏßÓëÇ
 color ray_color(const ray& r, const hittable& world) {
     hit_record rec;
     if (world.hit(r, 0, infinity, rec)) {
-        return 0.5 * (rec.normal + color(1, 1, 1));
+        return 0.5 * (rec.normal + color(1, 1, 1)); 
     }
 
     // ±³¾°É«

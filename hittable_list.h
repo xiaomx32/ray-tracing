@@ -4,7 +4,6 @@
 /*
 * 存放物体的列表
 */
-
 #include "hittable.h"
 #include <memory>// 智能指针 std::shared_ptr
 #include <vector>
@@ -20,14 +19,14 @@ public:
 	void clear();
 	void add(shared_ptr<hittable> object);
 
+	// 派生类需要再次声明继承来的虚函数，但前面的 virtual 可写可不写
+	// override 关键字，注明使用哪个成员函数改写基类的虚函数
 	virtual bool hit(const ray& r, double t_min, double t_max, hit_record& rec) const override;
 
 public:
 	std::vector<shared_ptr<hittable>> objects;
 };
-
 #endif
-
 /*
 * shared_ptr 智能指针
 * shared_ptr 类描述一个对象，该对象使用引用计数来管理资源
