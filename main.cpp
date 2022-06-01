@@ -54,7 +54,7 @@ color ray_color(const ray& r) {
     /*
     * 原视口高度本身就为 [-1, 1]
     * 因此单位化这一步是错的，得到的结果不是真正的白蓝渐变，可以直接这么写：
-    * auto t = 0.5 * (unit_direction.y() + 1.0);// 将 y 分量映射到 [0, 1]
+    * auto t = 0.5 * (unit_direction.y() + 1.0);
     */
     vec3 unit_direction = unit_vector(r.direction());// 单位化，此时取值范围是 [-1, 1]
     auto t = 0.5 * (unit_direction.y() + 1.0);// 将 y 分量映射到 [0, 1]
