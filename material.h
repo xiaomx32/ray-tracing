@@ -1,6 +1,10 @@
 #ifndef MATERIAL_H
 #define MATERIAL_H
 
+/*
+* 1、生成散射后的光线(或者说它吸收了入射光线)
+* 2、如果发生散射, 决定光线会变暗多少（attenuate）
+*/
 #include "hittable.h"
 #include "rtweekend.h"
 #include "ray.h"
@@ -14,8 +18,12 @@ struct hit_record;
 
 class material {
 public:
-    virtual bool scatter(const ray& r_in,
-        const hit_record& rec, color& attenuation, ray& scattered) const = 0;
+    virtual bool scatter(
+        const ray& r_in,
+        const hit_record& rec,
+        color& attenuation,
+        ray& scattered
+    ) const = 0;
 };
 
 
@@ -23,8 +31,12 @@ class lambertian : public material {
 public:
     lambertian(const color& a);
 
-    virtual bool scatter(const ray& r_in,
-        const hit_record& rec, color& attenuation, ray& scattered) const override;
+    virtual bool scatter(
+        const ray& r_in,
+        const hit_record& rec,
+        color& attenuation,// 衰减
+        ray& scattered// 散射
+    ) const override;
 
 public:
     color albedo;
@@ -35,8 +47,12 @@ class metal : public material {
 public:
     metal(const color& a, double f);
 
-    virtual bool scatter(const ray& r_in,
-        const hit_record& rec, color& attenuation, ray& scattered) const override;
+    virtual bool scatter(
+        const ray& r_in,
+        const hit_record& rec,
+        color& attenuation,
+        ray& scattered
+    ) const override;
 
 public:
     color albedo;

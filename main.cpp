@@ -66,12 +66,8 @@ int main() {
     return 0;
 }
 
-double hit_sphere(const point3& center, double radius, const ray& r) {// Ö±ÏßÓëÇòµÄ½»µã
-    vec3 oc = r.origin() - center;// ÇòÐÄ×ø±ê
-    //auto a = dot(r.direction(), r.direction());
-    //auto b = 2.0 * dot(oc, r.direction());
-    //auto c = dot(oc, oc) - radius * radius;
-    //auto discriminant = b * b - 4 * a * c;
+double hit_sphere(const point3& center, double radius, const ray& r) {
+    vec3 oc = r.origin() - center;
     auto a = r.direction().length_squared();
     auto half_b = dot(oc, r.direction());
     auto c = oc.length_squared() - radius * radius;
@@ -90,12 +86,10 @@ double hit_sphere(const point3& center, double radius, const ray& r) {// Ö±ÏßÓëÇ
 color ray_color(const ray& r, const hittable& world, int depth) {
     hit_record rec;
 
-    // If we've exceeded the ray bounce limit, no more light is gathered.
     if (depth <= 0) {
         return color(0, 0, 0);
     }
 
-    // Fixing Shadow Acne -> 0.001
     if (world.hit(r, 0.001, infinity, rec)) {
         ray scattered;
         color attenuation;
