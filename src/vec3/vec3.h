@@ -29,7 +29,6 @@ public:
 	double length_squared() const;
 	double length() const;
 
-
 public:
 	double e[3];
 
