@@ -10,20 +10,20 @@ double vec3::y() const { return e[1]; }
 
 double vec3::z() const { return e[2]; }
 
-vec3 vec3::operator-() const {// ¶¨Òå¸ººÅµÄÒâÒå
+vec3 vec3::operator-() const {// å®šä¹‰è´Ÿå·çš„æ„ä¹‰
 	return vec3(-e[0], -e[1], -e[2]);
 }
 
-double vec3::operator[](int i) const {// È¡Öµ
+double vec3::operator[](int i) const {// å–å€¼
 	return e[i];
 }
 
-double& vec3::operator[](int i) {// ¼ÓÒıÓÃ£¬¿ÉÒÔĞŞ¸ÄÖµ
+double& vec3::operator[](int i) {// åŠ å¼•ç”¨ï¼Œå¯ä»¥ä¿®æ”¹å€¼
 	return e[i];
 }
 
 vec3& vec3::operator+=(const vec3& v) {
-	e[0] += v.e[0];// "." ÔËËã·ûÀ´·ÃÎÊ v ¶ÔÏóµÄ³ÉÔ±
+	e[0] += v.e[0];// "." è¿ç®—ç¬¦æ¥è®¿é—® v å¯¹è±¡çš„æˆå‘˜
 	e[1] += v.e[1];
 	e[2] += v.e[2];
 
@@ -42,16 +42,16 @@ vec3& vec3::operator/=(const double t) {
 	return *this *= 1 / t;
 }
 
-double vec3::length_squared() const {// ÏòÁ¿Ä£µÄÆ½·½
+double vec3::length_squared() const {// å‘é‡æ¨¡çš„å¹³æ–¹
 	return e[0] * e[0] + e[1] * e[1] + e[2] * e[2];
 }
 
-double vec3::length() const {// ÏòÁ¿µÄÄ£
+double vec3::length() const {// å‘é‡çš„æ¨¡
 	return std::sqrt(length_squared());
 }
 
 
-// ·Ç³ÉÔ±º¯Êı
+// éæˆå‘˜å‡½æ•°
 std::ostream& operator<<(std::ostream& out, const vec3& v) {
 	return out << v.e[0] << ' ' << v.e[1] << ' ' << v.e[2];
 }
@@ -68,7 +68,7 @@ vec3 operator*(const vec3& u, const vec3& v) {
 	return vec3(u.e[0] * v.e[0], u.e[1] * v.e[1], u.e[2] * v.e[2]);
 }
 
-vec3 operator*(double t, const vec3& v) {// ÏòÁ¿Êı³Ë
+vec3 operator*(double t, const vec3& v) {// å‘é‡æ•°ä¹˜
 	return vec3(t * v.e[0], t * v.e[1], t * v.e[2]);
 }
 
@@ -80,16 +80,16 @@ vec3 operator/(vec3 v, double t) {
 	return (1 / t) * v;
 }
 
-double dot(const vec3& u, const vec3& v) {// µã³Ë
+double dot(const vec3& u, const vec3& v) {// ç‚¹ä¹˜
 	return u.e[0] * v.e[0] + u.e[1] * v.e[1] + u.e[2] * v.e[2];
 }
 
-vec3 cross(const vec3& u, const vec3& v) {// ²æ³Ë
+vec3 cross(const vec3& u, const vec3& v) {// å‰ä¹˜
 	return vec3(u.e[1] * v.e[2] - u.e[2] * v.e[1],
 		u.e[2] * v.e[0] - u.e[0] * v.e[2],
 		u.e[0] * v.e[1] - u.e[1] * v.e[0]);
 }
 
-vec3 unit_vector(vec3 v) {// µ¥Î»»¯
+vec3 unit_vector(vec3 v) {// å•ä½åŒ–
 	return v / v.length();
 }
