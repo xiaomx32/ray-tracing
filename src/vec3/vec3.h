@@ -4,20 +4,20 @@
 #include <cmath>
 #include <iostream>
 
-// ÏòÁ¿Àà
+// å‘é‡ç±»
 class vec3 {
 
 public:
-	// ¹¹Ôìº¯Êı£¬ÓÃÓÚ³õÊ¼»¯ vec3 Àà
+	// æ„é€ å‡½æ•°ï¼Œç”¨äºåˆå§‹åŒ– vec3 ç±»
 	vec3();
 	vec3(double e0, double e1, double e2);
 
-	// ÓÃÓÚ½ÓÊÕ e µÄÖµ£¬ÔÚ±à³ÌÊ±¿ÉÒÔÖ±½ÓÊ¹ÓÃ£¨x£¬y£¬z£©¸üÀûÓÚÃ÷°×ÒâË¼
+	// ç”¨äºæ¥æ”¶ e çš„å€¼ï¼Œåœ¨ç¼–ç¨‹æ—¶å¯ä»¥ç›´æ¥ä½¿ç”¨ï¼ˆxï¼Œyï¼Œzï¼‰æ›´åˆ©äºæ˜ç™½æ„æ€
 	double x() const;
 	double y() const;
 	double z() const;
 
-	// ÖØÔØÔËËã·û£¬¶¨Òå vec3 ÓĞ¹ØµÄ²Ù×÷
+	// é‡è½½è¿ç®—ç¬¦ï¼Œå®šä¹‰ vec3 æœ‰å…³çš„æ“ä½œ
 	vec3 operator-() const;
 	double operator[](int i) const;
 	double& operator[](int i);
@@ -34,11 +34,11 @@ public:
 
 };
 
-// È¡±ğÃû
+// å–åˆ«å
 using point3 = vec3;// 3d point
 using color = vec3;// RGB color
 
-// ·Ç³ÉÔ±º¯Êı
+// éæˆå‘˜å‡½æ•°
 std::ostream& operator<<(std::ostream& out, const vec3& v);
 
 vec3 operator+(const vec3& u, const vec3& v);
@@ -62,9 +62,9 @@ vec3 unit_vector(vec3 v);
 #endif
 
 /*
-* 1¡¢¹¹Ôìº¯Êı
-* 2¡¢ÖØÔØÔËËã·û
-*		Ïàµ±ÓÚÒ»¸öº¯Êı£¬ĞÎ²Î¸öÊıµÈÓÚÔËËã·û²ÎÓë¶ÔÏó¸öÊı
-* 3¡¢·µ»ØÒ»¸öÖµµÄÒıÓÃ
-* 4¡¢ÀàÄÚ²¿µÄ³ÉÔ±º¯ÊıÊÇ×Ô¶¯ inline µÄ
+* 1ã€æ„é€ å‡½æ•°
+* 2ã€é‡è½½è¿ç®—ç¬¦
+*		ç›¸å½“äºä¸€ä¸ªå‡½æ•°ï¼Œå½¢å‚ä¸ªæ•°ç­‰äºè¿ç®—ç¬¦å‚ä¸å¯¹è±¡ä¸ªæ•°
+* 3ã€è¿”å›ä¸€ä¸ªå€¼çš„å¼•ç”¨
+* 4ã€ç±»å†…éƒ¨çš„æˆå‘˜å‡½æ•°æ˜¯è‡ªåŠ¨ inline çš„
 */

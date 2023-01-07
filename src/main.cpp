@@ -9,7 +9,7 @@ int main() {
     const int image_height = 256;
 
     // Render
-    // 输出流，可以重定向写入到文件
+    // 杈撳嚭娴侊紝鍙互閲嶅畾鍚戝啓鍏ュ埌鏂囦欢
     std::cout << "P3\n" << image_width << " " << image_height << "\n255\n";
 
     for (int j = image_height - 1; j >= 0; --j) {
@@ -19,7 +19,7 @@ int main() {
             write_color(std::cout, pixel_color);
         }
     }
-    // 处理错误输出流，无缓冲，只能写到屏幕上，不能重定向写入到文件
+    // 澶勭悊閿欒杈撳嚭娴侊紝鏃犵紦鍐诧紝鍙兘鍐欏埌灞忓箷涓婏紝涓嶈兘閲嶅畾鍚戝啓鍏ュ埌鏂囦欢
     std::cerr << "\nDone.\n";
     std::cin.get();
 
