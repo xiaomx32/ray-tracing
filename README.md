@@ -1,2 +1,6 @@
-# ray-tracing
-Ray tracing with C++.
+# build
+
+try
+```
+xmake
+```

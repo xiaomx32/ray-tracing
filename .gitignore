@@ -1,0 +1,11 @@
+.vs/
+.vscode/*
+.xmake/
+
+# intellisense
+.cache/
+
+# build
+build/
+*.jpg
+*.ppm
