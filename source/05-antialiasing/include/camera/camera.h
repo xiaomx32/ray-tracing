@@ -1,7 +1,7 @@
 #ifndef CAMERA_H
 #define CAMERA_H
 
-#include "rtweekend.h"
+#include "rtweekend\rtweekend.h"
 
 class camera {
 public:

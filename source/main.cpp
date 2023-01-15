@@ -1,8 +1,8 @@
-#include "camera.h"
-#include "rtweekend.h"
-#include "color.h"
-#include "hittable_list.h"
-#include "sphere.h"
+#include "camera\camera.h"
+#include "rtweekend\rtweekend.h"
+#include "color\color.h"
+#include "hittable\hittable_list.h"
+#include "sphere\sphere.h"
 
 #include <iostream>
 
@@ -32,7 +32,7 @@ int main() {
         std::cerr << "\rScanlines remaining: " << j << ' ' << std::flush;
         for (int i = 0; i < image_width; ++i) {
             color pixel_color(0, 0, 0);
-            for (int s = 0; s < samples_per_pixel; ++s) {// ´ËÑ­»·£¬ÓÃÓÚ¶ÔÃ¿¸öÏñËØ½øÐÐ¶àÖØ²ÉÑù
+            for (int s = 0; s < samples_per_pixel; ++s) {// å¯¹æ¯ä¸ªåƒç´ è¿›è¡Œå¤šé‡é‡‡æ ·
                 auto u = (i + random_double()) / (double)(image_width - 1);
                 auto v = (j + random_double()) / (double)(image_height - 1);
                 ray r = cam.get_ray(u, v);

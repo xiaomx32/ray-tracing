@@ -4,20 +4,18 @@
 #include <cmath>
 #include <iostream>
 
-// 向量类
+
 class vec3 {
 
 public:
-	// 构造函数，用于初始化 vec3 类
+
 	vec3();
 	vec3(double e0, double e1, double e2);
 
-	// 用于接收 e 的值，在编程时可以直接使用（x，y，z）更利于明白意思
 	double x() const;
 	double y() const;
 	double z() const;
 
-	// 重载运算符，定义 vec3 有关的操作
 	vec3 operator-() const;
 	double operator[](int i) const;
 	double& operator[](int i);
@@ -34,11 +32,9 @@ public:
 
 };
 
-// 取别名
 using point3 = vec3;// 3d point
 using color = vec3;// RGB color
 
-// 非成员函数
 std::ostream& operator<<(std::ostream& out, const vec3& v);
 
 vec3 operator+(const vec3& u, const vec3& v);

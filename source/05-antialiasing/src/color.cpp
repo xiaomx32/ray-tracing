@@ -1,10 +1,10 @@
-#include "color.h"
+#include "color\color.h"
 
 /*
-* ¶àÖØ²ÉÑù£º¶ÔÒ»¸öÏñËØµãËæ»ú²ÉÑù spp£¨samples_per_pixel£©´Î
-* ²»»áÃ¿´Î·¢³öÉäÏß²ÉÑùÊ±¶¼¼ÆËãÒ»¸ö 0 - 1 Ö®¼äµÄÑÕÉ«Öµ,
-* ¶øÊÇÒ»´ÎÐÔ°ÑËùÓÐµÄÑÕÉ«¶¼¼ÓÔÚÒ»ÆðÈ»ºó×îºóÖ»ÐèÒª¼òµ¥µÄ³ýÒÔ²ÉÑùµã¸öÊý
-* ÁíÍâ, ¸øÍ·ÎÄ¼þ rtweekend.h ¼ÓÈëÁËÒ»¸öÐÂº¯Êý clamp(x, min, max), ÓÃÀ´½« x ÏÞÖÆÔÚ [min,max] Çø¼äÖ®ÖÐ
+* å¤šé‡é‡‡æ ·ï¼šå¯¹ä¸€ä¸ªåƒç´ ç‚¹éšæœºé‡‡æ · sppï¼ˆsamples_per_pixelï¼‰æ¬¡
+* ä¸ä¼šæ¯æ¬¡å‘å‡ºå°„çº¿é‡‡æ ·æ—¶éƒ½è®¡ç®—ä¸€ä¸ª 0 - 1 ä¹‹é—´çš„é¢œè‰²å€¼,
+* è€Œæ˜¯ä¸€æ¬¡æ€§æŠŠæ‰€æœ‰çš„é¢œè‰²éƒ½åŠ åœ¨ä¸€èµ·ç„¶åŽæœ€åŽåªéœ€è¦ç®€å•çš„é™¤ä»¥é‡‡æ ·ç‚¹ä¸ªæ•°
+* å¦å¤–, ç»™å¤´æ–‡ä»¶ rtweekend.h åŠ å…¥äº†ä¸€ä¸ªæ–°å‡½æ•° clamp(x, min, max), ç”¨æ¥å°† x é™åˆ¶åœ¨ [min,max] åŒºé—´ä¹‹ä¸­
 */
 void write_color(std::ostream& out, color pixel_color, int samples_per_pixel) {
     auto r = pixel_color.x();
