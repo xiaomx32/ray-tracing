@@ -1,7 +1,7 @@
-#include "rtweekend.h"
-#include "color.h"
-#include "hittable_list.h"
-#include "sphere.h"
+#include "rtweekend\rtweekend.h"
+#include "color\color.h"
+#include "hittable\hittable_list.h"
+#include "sphere\sphere.h"
 
 #include <iostream>
 
@@ -18,7 +18,7 @@ int main() {
     // World
     hittable_list world;
     world.add(make_shared<sphere>(point3(0, 0, -1), 0.5));
-    // ÔÚ£¨0, -100.5, -1£©´¦£¬·ÅÖÃÒ»¸öÇò
+    // åœ¨ï¼ˆ0, -100.5, -1ï¼‰å¤„ï¼Œæ”¾ç½®ä¸€ä¸ªçƒ
     world.add(make_shared<sphere>(point3(0, -100.5, -1), 100));
 
     // Camera
@@ -39,7 +39,7 @@ int main() {
         for (int i = 0; i < image_width; ++i) {
             auto u = double(i) / (double)(image_width - 1);
             auto v = double(j) / (double)(image_height - 1);
-            ray r(origin, lower_left_corner + u * horizontal + v * vertical - origin);
+            ray r(origin, lower_left_corner + u * horizontal + v * vertical - origin);// ç…§ç›¸æœºä½äº(0, 0, 0)
             color pixel_color = ray_color(r, world);
             write_color(std::cout, pixel_color);
         }
@@ -51,11 +51,11 @@ int main() {
     return 0;
 }
 
-// ¼ÆËãÇòÌå±íÃæÓëÉäÏßµÄ½»µãÒÔ¼°¸ÃµãµÄ·¨Ïß
-// Ö±½Ó½«·¨ÏàÖµ×÷ÎªÑÕÉ«Êä³ö
-// Ö»ĞèÒª¼ÆËãÀëÉäÏßÔ­µã×î½üµÄÄÇ¸ö½»µãµÄ·¨Ïà¾ÍĞĞÁË, ºóÃæµÄ¶«Î÷»á±»ÕÚµ²
-double hit_sphere(const point3& center, double radius, const ray& r) {// Ö±ÏßÓëÇòµÄ½»µã
-    vec3 oc = r.origin() - center;// ÉäÏßµÄÆğµã¡¢ÇòĞÄ
+// è®¡ç®—çƒä½“è¡¨é¢ä¸å°„çº¿çš„äº¤ç‚¹ä»¥åŠè¯¥ç‚¹çš„æ³•çº¿
+// ç›´æ¥å°†æ³•ç›¸å€¼ä½œä¸ºé¢œè‰²è¾“å‡º
+// åªéœ€è¦è®¡ç®—ç¦»å°„çº¿åŸç‚¹æœ€è¿‘çš„é‚£ä¸ªäº¤ç‚¹çš„æ³•ç›¸å°±è¡Œäº†, åé¢çš„ä¸œè¥¿ä¼šè¢«é®æŒ¡
+double hit_sphere(const point3& center, double radius, const ray& r) {// ç›´çº¿ä¸çƒçš„äº¤ç‚¹
+    vec3 oc = r.origin() - center;// å°„çº¿çš„èµ·ç‚¹ã€çƒå¿ƒ
     //auto a = dot(r.direction(), r.direction());
     //auto b = 2.0 * dot(oc, r.direction());
     //auto c = dot(oc, oc) - radius * radius;
@@ -75,14 +75,14 @@ double hit_sphere(const point3& center, double radius, const ray& r) {// Ö±ÏßÓëÇ
     return 0.0;
 }
 
-// Ê¹ÓÃºìÉ«µÄÏß±íÊ¾ÉäÏß»÷ÖĞ£¨0, 0, -1£©´¦µÄĞ¡Çò
+// ä½¿ç”¨çº¢è‰²çš„çº¿è¡¨ç¤ºå°„çº¿å‡»ä¸­ï¼ˆ0, 0, -1ï¼‰å¤„çš„å°çƒ
 color ray_color(const ray& r, const hittable& world) {
     hit_record rec;
     if (world.hit(r, 0, infinity, rec)) {
         return 0.5 * (rec.normal + color(1, 1, 1)); 
     }
 
-    // ±³¾°É«
+    // èƒŒæ™¯è‰²
     vec3 unit_direction = unit_vector(r.direction());
     auto t = 0.5 * (unit_direction.y() + 1.0);
 

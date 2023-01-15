@@ -1,13 +1,13 @@
-#include "hittable.h"
+#include "hittable\hittable.h"
 
 hit_record::hit_record() : t(0.0), front_face(true) {}
 
 void hit_record::set_face_normal(const ray& r, const vec3& outward_normal) {
-	// ´Ë·½·¨£¬ÓÀÔ¶Ê¹·¨ÏßÏòÍâ
+	// æ­¤æ–¹æ³•ï¼Œæ°¸è¿œä½¿æ³•çº¿å‘å¤–
 
-	// ÀûÓÃµã³Ë£¬ÅĞ¶Ï·¨ÏßÓë¹âÏßµÄ·½Ïò
-	// Í¬Ïò£º¹âÏß´ÓÎïÌåÄÚ²¿ÉäÏòÎïÌå±íÃæ
-	// ·´Ïò£º¹âÏß´ÓÎïÌåÍâ²¿ÉäÏòÎïÌå±íÃæ
+	// åˆ©ç”¨ç‚¹ä¹˜ï¼Œåˆ¤æ–­æ³•çº¿ä¸å…‰çº¿çš„æ–¹å‘
+	// åŒå‘ï¼šå…‰çº¿ä»ç‰©ä½“å†…éƒ¨å°„å‘ç‰©ä½“è¡¨é¢
+	// åå‘ï¼šå…‰çº¿ä»ç‰©ä½“å¤–éƒ¨å°„å‘ç‰©ä½“è¡¨é¢
 	front_face = dot(r.direction(), outward_normal) < 0;
 	normal = front_face ? outward_normal : -outward_normal;
 }

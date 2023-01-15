@@ -1,15 +1,15 @@
 #ifndef SPHERE_H
 #define SPHERE_H
 
-#include "hittable.h"
-#include "vec3.h"
+#include "hittable\hittable.h"
+#include "vec3\vec3.h"
 
 class sphere : public hittable {
 public:
 	sphere();
 	sphere(point3 cen, double r);
 
-	// override ¹Ø¼ü×Ö±íÊ¾ÖØĞ´¸¸ÀàµÄĞéº¯Êı£¬Ç°ÃæµÄ virtual ¿ÉĞ´¿É²»Ğ´
+	// override å…³é”®å­—è¡¨ç¤ºé‡å†™çˆ¶ç±»çš„è™šå‡½æ•°ï¼Œå‰é¢çš„ virtual å¯å†™å¯ä¸å†™
 	virtual bool hit(const ray& r, double t_min, double t_max, hit_record& rec) const override;
 
 public:
