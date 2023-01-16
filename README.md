@@ -1,2 +1,3 @@
-# ray-tracing
-Ray tracing with C++.
+## 运行代码
+
+执行 `run.bat`脚本。
