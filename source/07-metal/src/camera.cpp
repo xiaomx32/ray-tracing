@@ -1,4 +1,4 @@
-#include "camera.h"
+#include "camera\camera.h"
 
 camera::camera() {
     auto aspect_ratio = 16.0 / 9.0;

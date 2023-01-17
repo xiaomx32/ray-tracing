@@ -1,4 +1,4 @@
-#include "material.h"
+#include "material\material.h"
 
 lambertian::lambertian(const color& a) : albedo(a) {}
 

@@ -2,19 +2,19 @@
 #define MATERIAL_H
 
 /*
-* 1、生成散射后的光线(或者说它吸收了入射光线)
-* 2、如果发生散射, 决定光线会变暗多少（attenuate）
-*/
-#include "hittable.h"
-#include "rtweekend.h"
-#include "ray.h"
+ * 1、生成散射后的光线(或者说它吸收了入射光线)
+ * 2、如果发生散射, 决定光线会变暗多少（attenuate）
+ */
+#include "hittable\hittable.h"
+#include "rtweekend\rtweekend.h"
+#include "ray\ray.h"
+
 
 /*
 * 在函数中使用 hit_record 作为传入参数，就可以不用传入一大堆变量
 * 当然如果你想传一堆变量进去的话也行，这也是个人喜好
 */
 struct hit_record;
-
 
 class material {
 public:
