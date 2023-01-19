@@ -1,4 +1,4 @@
-#include "vec3/vec3.h"
+#include <vec3/vec3.h>
 
 vec3::vec3() : e{ 0.0f, 0.0f, 0.0f } {}
 
