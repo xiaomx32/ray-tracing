@@ -6,8 +6,8 @@
 * 对于 pi 来说并没有什么跨平台的标准定义（译注：这就是为什么不使用之前版本中 M_PI 宏定义的原因）
 * 所以这里自己来定义一下
 */
-#include "vec3\vec3.h"
-#include "ray\ray.h"
+#include <vec3\vec3.h>
+#include <ray\ray.h>
 
 #include <cmath>
 #include <limits>

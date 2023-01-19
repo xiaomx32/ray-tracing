@@ -7,7 +7,7 @@
 * 2、计算光线是否与场景中的物体相交
 * 3、如果有, 计算交点的颜色
 */
-#include "vec3\vec3.h"
+#include <vec3\vec3.h>
 
 class ray {
 

@@ -1,4 +1,4 @@
-#include "color\color.h"
+#include <color\color.h>
 
 void write_color(std::ostream& out, color pixel_color) {
 	// write the translated [0, 255] value of each color component.

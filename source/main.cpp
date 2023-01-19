@@ -1,17 +1,15 @@
-#include "rtweekend\rtweekend.h"
-#include "color\color.h"
-#include "hittable\hittable_list.h"
-#include "sphere\sphere.h"
+#include <rtweekend\rtweekend.h>
+#include <hittable\hittable_list.h>
+#include <sphere\sphere.h>
 
 #include <iostream>
 
-//double hit_sphere(const point3& center, double radius, const ray& r);
 color ray_color(const ray& r, const hittable& world);
 
 int main() {
     // image
+    const int image_width = 200;
     const int image_height = 100;
-    const int image_width = 400;
 
     // World
     hittable_list world;

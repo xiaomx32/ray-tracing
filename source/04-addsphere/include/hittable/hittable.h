@@ -1,7 +1,7 @@
 #ifndef HITTABLE_H
 #define HITTABLE_H
 
-#include "ray\ray.h"
+#include <ray\ray.h>
 
 // 记录“击中”信息的结构体
 struct hit_record {

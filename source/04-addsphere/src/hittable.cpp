@@ -1,4 +1,4 @@
-#include "hittable\hittable.h"
+#include <hittable\hittable.h>
 
 hit_record::hit_record() : t(0.0), front_face(true) {}
 
