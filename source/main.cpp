@@ -1,21 +1,11 @@
 #include <vec3/vec3.h>
-#include <color/color.h>
-#include <ray/ray.h>
-
 #include <iostream>
 
-color ray_color(const ray& r);
 
 int main() {
     // image
     const int image_width = 200;
     const int image_height = 100;
-
-    // Camera
-    vec3 lower_left_corner(-2.0, -1.0, -1.0);
-    vec3 horizontal(4.0, 0.0, 0.0);
-    vec3 vertical(0.0, 2.0, 0.0);
-    vec3 origin(0.0, 0.0, 0.0);
 
     // Render
     std::cout << "P3\n" << image_width << " " << image_height << "\n255\n";
@@ -23,11 +13,8 @@ int main() {
     for (int j = image_height - 1; j >= 0; --j) {
         std::cerr << "\rScanlines remaining: " << j << ' ' << std::flush;
         for (int i = 0; i < image_width; ++i) {
-            auto u = double(i) / (double)(image_width - 1);
-            auto v = double(j) / (double)(image_height - 1);
-            ray r(origin, lower_left_corner + u * horizontal + v * vertical - origin);
-            color pixel_color = ray_color(r);
-            write_color(std::cout, pixel_color);
+            vec3 color(double(i)/image_width, double(j)/image_height, 0.2);
+            color.write_color(std::cout);
         }
     }
 
@@ -37,20 +24,20 @@ int main() {
 }
 
 /*
- * ÆÁÄ»×ø±êÏµ£º4 * 2£¨×Ô¶¨ÒåµÄ£©
- * ÐèÒª½«¹âÏß£¨ÊÓÏß£©ÏòÁ¿£¬½øÐÐµ¥Î»»¯£¬ÒÔ±£Ö¤Ã¿¸ö×ø±ê·ÖÁ¿µÄ³¤¶È¿ØÖÆÔÚ [-1, 1]
- * ÒòÎªÎÒÃÇÊ¹ÓÃ y Öá×ö½¥±ä, ËùÒÔÄã¿ÉÒÔ¿´µ½Õâ¸öÀ¶°×½¥±äÒ²ÊÇÊúÖ±µÄ
+ * å±å¹•åæ ‡ç³»ï¼š4 * 2ï¼ˆè‡ªå®šä¹‰çš„ï¼‰
+ * éœ€è¦å°†å…‰çº¿ï¼ˆè§†çº¿ï¼‰å‘é‡ï¼Œè¿›è¡Œå•ä½åŒ–ï¼Œä»¥ä¿è¯æ¯ä¸ªåæ ‡åˆ†é‡çš„é•¿åº¦æŽ§åˆ¶åœ¨ [-1, 1]
+ * å› ä¸ºæˆ‘ä»¬ä½¿ç”¨ y è½´åšæ¸å˜, æ‰€ä»¥ä½ å¯ä»¥çœ‹åˆ°è¿™ä¸ªè“ç™½æ¸å˜ä¹Ÿæ˜¯ç«–ç›´çš„
 */
 
-// ray_color(ray) º¯Êý¸ù¾Ý y Öµ½«À¶°××öÏßÐÔ²åÖµµÄ»ìºÏ
+// ray_color(ray) å‡½æ•°æ ¹æ® y å€¼å°†è“ç™½åšçº¿æ€§æ’å€¼çš„æ··åˆ
 color ray_color(const ray& r) {
     /*
-    * Ô­ÊÓ¿Ú¸ß¶È±¾Éí¾ÍÎª [-1, 1]
-    * Òò´Ëµ¥Î»»¯ÕâÒ»²½ÊÇ´íµÄ£¬µÃµ½µÄ½á¹û²»ÊÇÕæÕýµÄ°×À¶½¥±ä£¬¿ÉÒÔÖ±½ÓÕâÃ´Ð´£º
+    * åŽŸè§†å£é«˜åº¦æœ¬èº«å°±ä¸º [-1, 1]
+    * å› æ­¤å•ä½åŒ–è¿™ä¸€æ­¥æ˜¯é”™çš„ï¼Œå¾—åˆ°çš„ç»“æžœä¸æ˜¯çœŸæ­£çš„ç™½è“æ¸å˜ï¼Œå¯ä»¥ç›´æŽ¥è¿™ä¹ˆå†™ï¼š
     * auto t = 0.5 * (r.direction().y() + 1.0);
     */
-    vec3 unit_direction = unit_vector(r.direction());// µ¥Î»»¯£¬´ËÊ±È¡Öµ·¶Î§ÊÇ [-1, 1]
-    auto t = 0.5 * (unit_direction.y() + 1.0);// ½« y ·ÖÁ¿Ó³Éäµ½ [0, 1]
+    vec3 unit_direction = unit_vector(r.direction());// å•ä½åŒ–ï¼Œæ­¤æ—¶å–å€¼èŒƒå›´æ˜¯ [-1, 1]
+    auto t = 0.5 * (unit_direction.y() + 1.0);// å°† y åˆ†é‡æ˜ å°„åˆ° [0, 1]
 
     return (1.0 - t) * color(1.0, 1.0, 1.0) + t * color(0.5, 0.7, 1.0);
 }
