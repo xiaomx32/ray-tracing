@@ -6,8 +6,9 @@ int main() {
 
     std::cout << "P3\n"
               << image_width << " " << image_height << "\n255\n";
-    
+
     for (int j = image_height - 1; j >= 0; --j) {
+        std::cerr << "\rScanlines remaining: " << j << ' ' << std::flush;
         for (int i = 0; i < image_width; ++i) {
             float r = float(i) / float(image_width);
             float g = float(j) / float(image_height);
@@ -18,7 +19,8 @@ int main() {
             std::cout << ir << " " << ig << " " << ib << "\n";
         }
     }
-
+    
+    std::cerr << "\nDone.\n";
     std::cin.get();
     
     return 0;
