@@ -1,4 +1,4 @@
-#include "vec3.h"
+#include "vec3\vec3.h"
 
 vec3::vec3() : e{ 0.0f, 0.0f, 0.0f } {}
 
@@ -64,7 +64,7 @@ bool vec3::near_zero() const {
 }
 
 
-// ·Ç³ÉÔ±º¯Êý
+// ï¿½Ç³ï¿½Ô±ï¿½ï¿½ï¿½ï¿½
 std::ostream& operator<<(std::ostream& out, const vec3& v) {
 	return out << v.e[0] << ' ' << v.e[1] << ' ' << v.e[2];
 }

@@ -1,18 +1,13 @@
-#include "vec3.h"
-#include "ray.h"
-#include "camera.h"
-#include "rtweekend.h"
-#include "color.h"
-#include "hittable.h"
-#include "hittable_list.h"
-#include "sphere.h"
-#include "material.h"
+#include "camera\camera.h"
+#include "rtweekend\rtweekend.h"
+#include "color\color.h"
+#include "hittable\hittable_list.h"
+#include "sphere\sphere.h"
+#include "material\material.h"
 
 #include <iostream>
 
 hittable_list random_scene();
-
-double hit_sphere(const point3& center, double radius, const ray& r);
 color ray_color(const ray& r, const hittable& world, int depth);
 
 int main() {

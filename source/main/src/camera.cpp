@@ -1,4 +1,4 @@
-#include "camera.h"
+#include "camera\camera.h"
 
 camera::camera(point3 lookfrom, point3 lookat,
     vec3 vup, double vfov, double aspect_ratio,
